@@ -2,15 +2,29 @@
 //  ContentView.swift
 //  QRCodeGenerator
 //
-//  Created by thepercussivedev on 7/1/21.
+//  Created by RCB Tech on 7/1/21.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack(alignment: .leading) {
+            Text("Welcome")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            HStack {
+                Text("DevNation!")
+                    .font(.title)
+                    .foregroundColor(.secondary)
+                Spacer()
+                Text("Nevada")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                
+            }
+        }
+        .padding()
     }
 }
 
