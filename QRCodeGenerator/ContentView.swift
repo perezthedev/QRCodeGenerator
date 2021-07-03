@@ -9,22 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Welcome")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-            HStack {
-                Text("DevNation!")
-                    .font(.title)
-                    .foregroundColor(.secondary)
-                Spacer()
-                Text("Nevada")
+        VStack{
+            MapView()
+                .ignoresSafeArea(edges: .top)
+                .frame(height: 300)
+            
+            CircleImage()
+                .offset(y: -130)
+                .padding(.bottom, -130)
+            
+            VStack(alignment: .leading) {
+                Text("Welcome")
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
+                HStack {
+                    Text("RCB Tech!")
+                        .font(.title)
+                    Spacer()
+                    Text("Nevada")
+                        .font(.subheadline)
+                    
+                }
+                Divider()
+                Text("About information here")
+                    .font(.title2)
                 
+                Text("Descriptor goes here.")
             }
+            .padding()
+            Spacer()
         }
-        .padding()
+      
     }
 }
 
