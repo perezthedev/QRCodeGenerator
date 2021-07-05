@@ -23,13 +23,42 @@ struct ContentView: View {
                 }.padding().shadow(radius: 1)
                 
                 HStack(alignment: .center){
+                    Text("Name:")
+                        .bold()
+                    TextField("Enter your name (optional)", text: $message)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                }.padding().shadow(radius: 1)
+                
+                HStack(alignment: .center){
                     Text("Message:")
                         .bold()
                     TextField("Enter your message (optional)", text: $message)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                 }.padding().shadow(radius: 1)
-            }.navigationBarTitle("QR Code Generator", displayMode: .large)
+                
+                HStack(alignment: .center){
+                    Text("Message:")
+                        .bold()
+                    TextField("Enter contact info (optional)", text: $message)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                }.padding().shadow(radius: 1)
+                
+                // creates QR Code button, leading to QR View
+                NavigationLink(destination: QRCodeView(), label: {
+                        Text("Create QR Code")
+                            .bold()
+                            .frame(width: 280, height: 50)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(50)
+                    })
+            }
+            .navigationBarTitle("QR Code Generator", displayMode: .large)
+            .offset(y:-70)
+           
         }
     }
 }

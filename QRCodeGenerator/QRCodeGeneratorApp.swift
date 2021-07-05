@@ -2,7 +2,7 @@
 //  QRCodeGeneratorApp.swift
 //  QRCodeGenerator
 //
-//  Created by thepercussivedev on 7/1/21.
+//  Created by RCB Tech on 7/1/21.
 //
 
 import SwiftUI
