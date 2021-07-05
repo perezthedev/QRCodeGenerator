@@ -39,7 +39,7 @@ struct ContentView: View {
                 }.padding().shadow(radius: 1)
                 
                 HStack(alignment: .center){
-                    Text("Message:")
+                    Text("Contact Info:")
                         .bold()
                     TextField("Enter contact info (optional)", text: $message)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
