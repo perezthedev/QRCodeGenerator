@@ -12,7 +12,10 @@ struct QRCodeView: View {
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     var url : String
+    
+    // not sure which format is best practice for iOS
     @State private var offset = CGSize.zero
+    @State private var lastPosition: CGSize = .zero
     
     var body: some View {
         
@@ -21,12 +24,14 @@ struct QRCodeView: View {
                 self.offset = value.translation
             }
             .onEnded { value in
-                self.offset = value.translation
+                self.lastPosition.width += value.translation.width
+                self.lastPosition.height += value.translation.height
+                self.offset = .zero
             }
             
         
         Image(uiImage: generateQRCodeImage(url)).interpolation(.none).resizable().frame(width: 150, height: 150, alignment: .center)
-            .offset(x: offset.width, y: offset.height)
+            .offset(x: offset.width + lastPosition.width, y: offset.height + lastPosition.height)
             .gesture(dragGesture)
             
             Text("Here is your QR Code!")
