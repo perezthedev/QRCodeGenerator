@@ -33,6 +33,7 @@ struct QRCodeView: View {
         Image(uiImage: generateQRCodeImage(url)).interpolation(.none).resizable().frame(width: 150, height: 150, alignment: .center)
             .offset(x: offset.width + lastPosition.width, y: offset.height + lastPosition.height)
             .gesture(dragGesture)
+            .shadow(radius: 2)
             
             Text("Here is your QR Code!")
                 
