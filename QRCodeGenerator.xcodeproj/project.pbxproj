@@ -14,6 +14,7 @@
 		F29FE7CB268EBF8700BBF13C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F29FE7CA268EBF8700BBF13C /* Preview Assets.xcassets */; };
 		F29FE7D6268EBF8700BBF13C /* QRCodeGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29FE7D5268EBF8700BBF13C /* QRCodeGeneratorTests.swift */; };
 		F29FE7E1268EBF8700BBF13C /* QRCodeGeneratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29FE7E0268EBF8700BBF13C /* QRCodeGeneratorUITests.swift */; };
+		F2EBADC42699EBC20004B26E /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EBADC32699EBC20004B26E /* QRCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		F29FE7DC268EBF8700BBF13C /* QRCodeGeneratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QRCodeGeneratorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29FE7E0268EBF8700BBF13C /* QRCodeGeneratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorUITests.swift; sourceTree = "<group>"; };
 		F29FE7E2268EBF8700BBF13C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2EBADC32699EBC20004B26E /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +99,9 @@
 		F29FE7C2268EBF8600BBF13C /* QRCodeGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				F2EBADBB2699EADA0004B26E /* Views */,
 				F29FE7C3268EBF8600BBF13C /* QRCodeGeneratorApp.swift */,
-				F29FE7C5268EBF8600BBF13C /* ContentView.swift */,
-				F20FBE0926936CB100645511 /* QRCodeView.swift */,
+				F2EBADC22699EB860004B26E /* Model */,
 				F29FE7C7268EBF8700BBF13C /* Assets.xcassets */,
 				F29FE7CC268EBF8700BBF13C /* Info.plist */,
 				F29FE7C9268EBF8700BBF13C /* Preview Content */,
@@ -131,6 +133,23 @@
 				F29FE7E2268EBF8700BBF13C /* Info.plist */,
 			);
 			path = QRCodeGeneratorUITests;
+			sourceTree = "<group>";
+		};
+		F2EBADBB2699EADA0004B26E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F29FE7C5268EBF8600BBF13C /* ContentView.swift */,
+				F20FBE0926936CB100645511 /* QRCodeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F2EBADC22699EB860004B26E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2EBADC32699EBC20004B26E /* QRCode.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F20FBE0A26936CB100645511 /* QRCodeView.swift in Sources */,
+				F2EBADC42699EBC20004B26E /* QRCode.swift in Sources */,
 				F29FE7C6268EBF8600BBF13C /* ContentView.swift in Sources */,
 				F29FE7C4268EBF8600BBF13C /* QRCodeGeneratorApp.swift in Sources */,
 			);
