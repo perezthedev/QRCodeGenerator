@@ -13,7 +13,6 @@ struct ContentView: View {
     @State var message: String = ""
     var body: some View {
         NavigationView {
-            // I want color 236, 236, 236
             ZStack{
                // Color(#colorLiteral(red: 0.9198423028, green: 0.9198423028, blue: 0.9198423028, alpha: 1))
                 Color(UIColor.secondarySystemBackground)

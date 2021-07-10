@@ -34,7 +34,7 @@ struct QRCodeView: View {
             
             
             Image(uiImage: generateQRCodeImage(url)).interpolation(.none).resizable().frame(width: 150, height: 150, alignment: .center)
-                .offset(x: offset.width + lastPosition.width, y: offset.height + lastPosition.height)
+                .offset(x: offset.width + lastPosition.width, y: offset.height + lastPosition.height) // added to make QR readable
                 .gesture(dragGesture)
                 .shadow(radius: 2)
             
