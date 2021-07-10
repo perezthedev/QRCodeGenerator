@@ -18,25 +18,27 @@ struct QRCodeView: View {
     @State private var lastPosition: CGSize = .zero
     
     var body: some View {
-        
-        let dragGesture = DragGesture()
-            .onChanged { value in
-                self.offset = value.translation
-            }
-            .onEnded { value in
-                self.lastPosition.width += value.translation.width
-                self.lastPosition.height += value.translation.height
-                self.offset = .zero
-            }
+        ZStack{
+            Color(UIColor.secondarySystemBackground)
+                .edgesIgnoringSafeArea(.all)
             
-        
-        Image(uiImage: generateQRCodeImage(url)).interpolation(.none).resizable().frame(width: 150, height: 150, alignment: .center)
-            .offset(x: offset.width + lastPosition.width, y: offset.height + lastPosition.height)
-            .gesture(dragGesture)
-            .shadow(radius: 2)
+            let dragGesture = DragGesture()
+                .onChanged { value in
+                    self.offset = value.translation
+                }
+                .onEnded { value in
+                    self.lastPosition.width += value.translation.width
+                    self.lastPosition.height += value.translation.height
+                    self.offset = .zero
+                }
             
-            Text("Here is your QR Code!")
-                
+            
+            Image(uiImage: generateQRCodeImage(url)).interpolation(.none).resizable().frame(width: 150, height: 150, alignment: .center)
+                .offset(x: offset.width + lastPosition.width, y: offset.height + lastPosition.height)
+                .gesture(dragGesture)
+                .shadow(radius: 2)
+            
+        }
     }
     
     func generateQRCodeImage(_ url: String) -> UIImage {
