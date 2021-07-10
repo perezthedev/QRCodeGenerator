@@ -8,7 +8,7 @@
 import Combine
 
 class QRCode:ObservableObject{
-    @Published var website:String = ""
+    @Published var website = "www.devnations.com"
     @Published var name:String = ""
     @Published var message:String = ""
     @Published var contactInfo:String = ""
