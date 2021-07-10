@@ -5,4 +5,11 @@
 //  Created by thepercussivedev on 7/10/21.
 //
 
-import Foundation
+import Combine
+
+class QRCode:ObservableObject{
+    @Published var website:String = ""
+    @Published var name:String = ""
+    @Published var message:String = ""
+    @Published var contactInfo:String = ""
+}
