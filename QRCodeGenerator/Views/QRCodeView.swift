@@ -22,17 +22,6 @@ struct QRCodeView: View {
             Color(UIColor.secondarySystemBackground)
                 .edgesIgnoringSafeArea(.all)
             
-            let dragGesture = DragGesture()
-                .onChanged { value in
-                    self.offset = value.translation
-                }
-                .onEnded { value in
-                    self.lastPosition.width += value.translation.width
-                    self.lastPosition.height += value.translation.height
-                    self.offset = .zero
-                }
-            
-            
             Image(uiImage: generateQRCodeImage(url)).interpolation(.none).resizable().frame(width: 150, height: 150, alignment: .center)
                 .offset(x: offset.width + lastPosition.width, y: offset.height + lastPosition.height) // added to make QR readable
                 .gesture(dragGesture)
@@ -52,6 +41,18 @@ struct QRCodeView: View {
         }
         
         return UIImage(systemName: "xmark") ?? UIImage()
+    }
+    
+    var dragGesture: some Gesture{
+        DragGesture()
+            .onChanged { value in
+                self.offset = value.translation
+            }
+            .onEnded { value in
+                self.lastPosition.width += value.translation.width
+                self.lastPosition.height += value.translation.height
+                self.offset = .zero
+            }
     }
 }
 
