@@ -27,6 +27,7 @@ struct QRCodeView: View {
                 .gesture(dragGesture)
                 .shadow(radius: 2)
             
+            Text("A line of text")
         }
     }
     
