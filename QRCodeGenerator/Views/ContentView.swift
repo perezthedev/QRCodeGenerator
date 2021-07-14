@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @ObservedObject var qrCode = QRCode()
+    
     @State var website: String = ""
     @State var message: String = ""
     var body: some View {
@@ -21,7 +23,7 @@ struct ContentView: View {
                     HStack(alignment: .center){
                         Text("URL Link:")
                             .bold()
-                        TextField("Enter your website", text: $website)
+                        TextField("Enter your website", text: self.$qrCode.website)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .foregroundColor(Color.black)
                     }.padding().shadow(radius: 1)
@@ -49,9 +51,9 @@ struct ContentView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                     }.padding().shadow(radius: 1)
-                    
+                    //Missing arguments for parameters 'website', 'name', 'message', 'contactInfo' in call
                     // creates QR Code button, leading to QR View
-                    NavigationLink(destination: QRCodeView(url: "www.devnations.com"), label: {
+                    NavigationLink(destination: QRCodeView(website: self.$qrCode.website, name: self.$qrCode.name, message: self.$qrCode.message, contactInfo: self.$qrCode.contactInfo, url: "\(self.$qrCode.website)"), label: {
                         Text("Create QR Code")
                             .bold()
                             .frame(width: 280, height: 50)

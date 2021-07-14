@@ -9,6 +9,12 @@ import SwiftUI
 import CoreImage.CIFilterBuiltins
 
 struct QRCodeView: View {
+    
+    @Binding var website:String
+    @Binding var name:String
+    @Binding var message:String
+    @Binding var contactInfo:String
+    
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     var url : String
@@ -27,7 +33,7 @@ struct QRCodeView: View {
                 .gesture(dragGesture)
                 .shadow(radius: 2)
             
-            Text("A line of text")
+            Text("")
         }
     }
     
@@ -57,9 +63,10 @@ struct QRCodeView: View {
     }
 }
 
-struct QRCodeView_Previews: PreviewProvider {
+/*struct QRCodeView_Previews: PreviewProvider {
     static var previews: some View {
         /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
-        QRCodeView(url: "www.devnations.com")
+        QRCodeView(website: self.$qrCode.website, name: self.$qrCode.name, message: self.$qrCode.message, contactInfo: self.$qrCode.contactInfo, url: "www.devnations.com")
     }
 }
+*/
