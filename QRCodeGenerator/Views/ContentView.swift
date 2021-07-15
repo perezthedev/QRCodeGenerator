@@ -11,8 +11,11 @@ struct ContentView: View {
     
     @ObservedObject var qrCode = QRCode()
     
+    // states are needed to go to next view, need to review @States again
     @State var website: String = ""
     @State var message: String = ""
+    @State var name: String = ""
+    @State var contactInfo: String = ""
     var body: some View {
         NavigationView {
             ZStack{
@@ -31,7 +34,7 @@ struct ContentView: View {
                     HStack(alignment: .center){
                         Text("Name:")
                             .bold()
-                        TextField("Enter your name (optional)", text: $message)
+                        TextField("Enter your name (optional)", text: self.$qrCode.name)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                     }.padding().shadow(radius: 1)
@@ -39,7 +42,7 @@ struct ContentView: View {
                     HStack(alignment: .center){
                         Text("Message:")
                             .bold()
-                        TextField("Enter your message (optional)", text: $message)
+                        TextField("Enter your message (optional)", text: self.$qrCode.message)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                     }.padding().shadow(radius: 1)
@@ -47,11 +50,11 @@ struct ContentView: View {
                     HStack(alignment: .center){
                         Text("Contact Info:")
                             .bold()
-                        TextField("Enter contact info (optional)", text: $message)
+                        TextField("Enter contact info (optional)", text: self.$qrCode.contactInfo)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                     }.padding().shadow(radius: 1)
-                    //Missing arguments for parameters 'website', 'name', 'message', 'contactInfo' in call
+                    
                     // creates QR Code button, leading to QR View
                     NavigationLink(destination: QRCodeView(website: self.$qrCode.website, name: self.$qrCode.name, message: self.$qrCode.message, contactInfo: self.$qrCode.contactInfo, url: "\(self.$qrCode.website)"), label: {
                         Text("Create QR Code")

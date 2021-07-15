@@ -33,7 +33,11 @@ struct QRCodeView: View {
                 .gesture(dragGesture)
                 .shadow(radius: 2)
             
-            Text("")
+            Text("\(name)")
+            
+            Text("\(message)")
+            
+            Text("\(contactInfo)")
         }
     }
     
