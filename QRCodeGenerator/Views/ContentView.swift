@@ -56,7 +56,7 @@ struct ContentView: View {
                     }.padding().shadow(radius: 1)
                     
                     // creates QR Code button, leading to QR View
-                    NavigationLink(destination: QRCodeView(website: self.$qrCode.website, name: self.$qrCode.name, message: self.$qrCode.message, contactInfo: self.$qrCode.contactInfo, url: "\(self.$qrCode.website)"), label: {
+                    NavigationLink(destination: QRCodeView(website: self.$qrCode.website, name: self.$qrCode.name, message: self.$qrCode.message, contactInfo: self.$qrCode.contactInfo, url: "\(self.qrCode.website)"), label: {
                         Text("Create QR Code")
                             .bold()
                             .frame(width: 280, height: 50)
