@@ -65,7 +65,7 @@ struct ContentView: View {
                             .cornerRadius(50)
                     })
                 }
-                .navigationBarTitle("QR Code Generator", displayMode: .large)
+                .navigationBarTitle("QR Code Generator", displayMode: .inline)
                 .offset(y:-70)
             }
         }
