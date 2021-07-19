@@ -20,8 +20,14 @@ struct QRCodeView: View {
     var url : String
     
     // not sure which format is best practice for iOS
-    @State private var offset = CGSize.zero
-    @State private var lastPosition: CGSize = .zero
+    @State private var qrOffset = CGSize.zero
+    @State private var qrLastPosition: CGSize = .zero
+    @State private var nameOffset = CGSize.zero
+    @State private var nameLastPosition: CGSize = .zero
+    @State private var messageOffset = CGSize.zero
+    @State private var messageLastPosition: CGSize = .zero
+    @State private var contactInfoOffset = CGSize.zero
+    @State private var contactInfoLastPosition: CGSize = .zero
     
     var body: some View {
         ZStack{
@@ -30,15 +36,56 @@ struct QRCodeView: View {
             VStack {
                 
                 Image(uiImage: generateQRCodeImage(url)).interpolation(.none).resizable().frame(width: 150, height: 150, alignment: .center)
-                    .offset(x: offset.width + lastPosition.width, y: offset.height + lastPosition.height) // added to make QR readable
-                    .gesture(dragGesture)
-                    .shadow(radius: 2)
+                    .offset(x: qrOffset.width + qrLastPosition.width, y: qrOffset.height + qrLastPosition.height) // added to make QR readable
+                    .gesture(DragGesture()
+                                .onChanged ({ value in
+                                    self.qrOffset = value.translation
+                                })
+                                .onEnded ({ value in
+                                    self.qrLastPosition.width += value.translation.width
+                                    self.qrLastPosition.height += value.translation.height
+                                    self.qrOffset = .zero
+                                })
+                    )
                 
                 Text("\(name)")
+                    .offset(x: nameOffset.width + nameLastPosition.width, y: nameOffset.height + nameLastPosition.height) // added to make QR readable
+                    .gesture(DragGesture()
+                                .onChanged ({ value in
+                                    self.nameOffset = value.translation
+                                })
+                                .onEnded ({ value in
+                                    self.nameLastPosition.width += value.translation.width
+                                    self.nameLastPosition.height += value.translation.height
+                                    self.nameOffset = .zero
+                                })
+                    )
                 
                 Text("\(message)")
+                    .offset(x: messageOffset.width + messageLastPosition.width, y: messageOffset.height + messageLastPosition.height) // added to make QR readable
+                    .gesture(DragGesture()
+                                .onChanged ({ value in
+                                    self.messageOffset = value.translation
+                                })
+                                .onEnded ({ value in
+                                    self.messageLastPosition.width += value.translation.width
+                                    self.messageLastPosition.height += value.translation.height
+                                    self.messageOffset = .zero
+                                })
+                    )
                 
                 Text("\(contactInfo)")
+                    .offset(x: contactInfoOffset.width + contactInfoLastPosition.width, y: contactInfoOffset.height + contactInfoLastPosition.height) // added to make QR readable
+                    .gesture(DragGesture()
+                                .onChanged ({ value in
+                                    self.contactInfoOffset = value.translation
+                                })
+                                .onEnded ({ value in
+                                    self.contactInfoLastPosition.width += value.translation.width
+                                    self.contactInfoLastPosition.height += value.translation.height
+                                    self.contactInfoOffset = .zero
+                                })
+                    )
             }
         }
     }
@@ -59,12 +106,12 @@ struct QRCodeView: View {
     var dragGesture: some Gesture{
         DragGesture()
             .onChanged { value in
-                self.offset = value.translation
+                self.qrOffset = value.translation
             }
             .onEnded { value in
-                self.lastPosition.width += value.translation.width
-                self.lastPosition.height += value.translation.height
-                self.offset = .zero
+                self.qrLastPosition.width += value.translation.width
+                self.qrLastPosition.height += value.translation.height
+                self.qrOffset = .zero
             }
     }
 }
