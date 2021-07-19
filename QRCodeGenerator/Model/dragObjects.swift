@@ -9,18 +9,18 @@ import SwiftUI
 
 class dragObjects:ObservableObject{
     
-    @State private var qrOffset = CGSize.zero
-    @State private var qrLastPosition: CGSize = .zero
+    @State private var offset = CGSize.zero
+    @State private var lastPosition: CGSize = .zero
     
     var drag: some Gesture{
         DragGesture()
             .onChanged ({ value in
-                self.qrOffset = value.translation
+                self.offset = value.translation
             })
             .onEnded ({ value in
-                self.qrLastPosition.width += value.translation.width
-                self.qrLastPosition.height += value.translation.height
-                self.qrOffset = .zero
+                self.lastPosition.width += value.translation.width
+                self.lastPosition.height += value.translation.height
+                self.offset = .zero
             })
     }
     
