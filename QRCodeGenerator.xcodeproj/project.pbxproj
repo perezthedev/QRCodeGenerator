@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F20FBE0A26936CB100645511 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20FBE0926936CB100645511 /* QRCodeView.swift */; };
+		F25F203826A5C99800408067 /* dragObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F203726A5C99800408067 /* dragObjects.swift */; };
 		F29FE7C4268EBF8600BBF13C /* QRCodeGeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29FE7C3268EBF8600BBF13C /* QRCodeGeneratorApp.swift */; };
 		F29FE7C6268EBF8600BBF13C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29FE7C5268EBF8600BBF13C /* ContentView.swift */; };
 		F29FE7C8268EBF8700BBF13C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F29FE7C7268EBF8700BBF13C /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		F20FBE0926936CB100645511 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
+		F25F203726A5C99800408067 /* dragObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dragObjects.swift; sourceTree = "<group>"; };
 		F29FE7C0268EBF8600BBF13C /* QRCodeGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29FE7C3268EBF8600BBF13C /* QRCodeGeneratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorApp.swift; sourceTree = "<group>"; };
 		F29FE7C5268EBF8600BBF13C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				F2EBADC32699EBC20004B26E /* QRCode.swift */,
+				F25F203726A5C99800408067 /* dragObjects.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				F2EBADC42699EBC20004B26E /* QRCode.swift in Sources */,
 				F29FE7C6268EBF8600BBF13C /* ContentView.swift in Sources */,
 				F29FE7C4268EBF8600BBF13C /* QRCodeGeneratorApp.swift in Sources */,
+				F25F203826A5C99800408067 /* dragObjects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
