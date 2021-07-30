@@ -22,12 +22,20 @@ struct QRCodeView: View {
     // not sure which format is best practice for iOS
     @State private var qrOffset = CGSize.zero
     @State private var qrLastPosition: CGSize = .zero
+    @State private var qrCurrentMagnification: CGFloat = 1
+    @GestureState private var qrPinchMagnification: CGFloat = 1
     @State private var nameOffset = CGSize.zero
     @State private var nameLastPosition: CGSize = .zero
+    @State private var nameCurrentMagnification: CGFloat = 1
+    @GestureState private var namePinchMagnification: CGFloat = 1
     @State private var messageOffset = CGSize.zero
     @State private var messageLastPosition: CGSize = .zero
+    @State private var messageCurrentMagnification: CGFloat = 1
+    @GestureState private var messagePinchMagnification: CGFloat = 1
     @State private var contactInfoOffset = CGSize.zero
     @State private var contactInfoLastPosition: CGSize = .zero
+    @State private var contactInfoCurrentMagnification: CGFloat = 1
+    @GestureState private var contactInfoPinchMagnification: CGFloat = 1
     
     var body: some View {
         ZStack{
@@ -47,6 +55,15 @@ struct QRCodeView: View {
                                     self.qrOffset = .zero
                                 })
                     )
+                    .scaleEffect(qrCurrentMagnification * qrPinchMagnification)
+                    .gesture(MagnificationGesture()
+                                .updating($qrPinchMagnification, body: { (value, state, _) in
+                                    state = value
+                                })
+                                .onEnded({ (value) in
+                                    self.qrCurrentMagnification *= value
+                                })
+                    )
                 
                 Text("\(name)")
                     .offset(x: nameOffset.width + nameLastPosition.width, y: nameOffset.height + nameLastPosition.height) // added to make QR readable
@@ -58,6 +75,15 @@ struct QRCodeView: View {
                                     self.nameLastPosition.width += value.translation.width
                                     self.nameLastPosition.height += value.translation.height
                                     self.nameOffset = .zero
+                                })
+                    )
+                    .scaleEffect(nameCurrentMagnification * namePinchMagnification)
+                    .gesture(MagnificationGesture()
+                                .updating($namePinchMagnification, body: { (value, state, _) in
+                                    state = value
+                                })
+                                .onEnded({ (value) in
+                                    self.nameCurrentMagnification *= value
                                 })
                     )
                 
@@ -73,6 +99,15 @@ struct QRCodeView: View {
                                     self.messageOffset = .zero
                                 })
                     )
+                    .scaleEffect(messageCurrentMagnification * messagePinchMagnification)
+                    .gesture(MagnificationGesture()
+                                .updating($messagePinchMagnification, body: { (value, state, _) in
+                                    state = value
+                                })
+                                .onEnded({ (value) in
+                                    self.messageCurrentMagnification *= value
+                                })
+                    )
                 
                 Text("\(contactInfo)")
                     .offset(x: contactInfoOffset.width + contactInfoLastPosition.width, y: contactInfoOffset.height + contactInfoLastPosition.height) // added to make QR readable
@@ -84,6 +119,15 @@ struct QRCodeView: View {
                                     self.contactInfoLastPosition.width += value.translation.width
                                     self.contactInfoLastPosition.height += value.translation.height
                                     self.contactInfoOffset = .zero
+                                })
+                    )
+                    .scaleEffect(contactInfoCurrentMagnification * contactInfoPinchMagnification)
+                    .gesture(MagnificationGesture()
+                                .updating($contactInfoPinchMagnification, body: { (value, state, _) in
+                                    state = value
+                                })
+                                .onEnded({ (value) in
+                                    self.contactInfoCurrentMagnification *= value
                                 })
                     )
             }
